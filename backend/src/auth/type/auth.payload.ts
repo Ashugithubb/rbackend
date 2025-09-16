@@ -1,4 +1,4 @@
 export interface AuthJwtPayload {
-  regId: number;
+  regId: string;
   role:string
 }

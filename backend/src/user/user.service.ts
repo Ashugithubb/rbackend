@@ -10,19 +10,16 @@ export class UserService {
   async create(createUserDto: CreateUserDto) {
     return await this.userRepo.AddUser(createUserDto);
   }
-  async findOneByRegId(id: number) {
+  async findOneByRegId(id:string) {
       return await this.userRepo.findById(id); 
     }
 
   findAll() {
     return `This action returns all user`;
   }
-  
-
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
-
   remove(id: number) {
     return `This action removes a #${id} user`;
   }

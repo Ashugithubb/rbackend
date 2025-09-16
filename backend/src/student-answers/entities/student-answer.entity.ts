@@ -26,7 +26,7 @@ attemptId:number
 answer:string
 
 @ManyToOne(()=>User,(u)=>u.studentAns)
-@JoinColumn({name:"userId"})
+@JoinColumn({name:"userId", referencedColumnName:"userId"})
 user:User
 
 @ManyToOne(()=>Question,(q)=>q.studentAns)
@@ -36,9 +36,5 @@ question:Question
 @ManyToOne(()=>Test,(t)=>t.studentAns)
 @JoinColumn({name:"testId"})
 test:Test
-
-@ManyToOne(()=>StudentTest)
-@JoinColumn({name:"attemptId"})
-studentAttempt:StudentTest
 
 }

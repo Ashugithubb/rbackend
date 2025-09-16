@@ -9,7 +9,7 @@ export class StudentTest {
     @PrimaryGeneratedColumn()
     id:number
 
-    @ManyToOne(()=>User,(u)=>u.studentTests)
+    @ManyToOne(()=>User,(u)=>u.userTests)
     @JoinColumn({name:"userId"})
     user:User
 
@@ -17,9 +17,5 @@ export class StudentTest {
     @JoinColumn({name:"testId"})
     test:Test
 
-    @OneToMany(()=>StudentAnswer,(s)=>s.studentAttempt)
-    studentAns:StudentAnswer[]
     
-    @Column({default:2})
-    maxAttempts:number
 }

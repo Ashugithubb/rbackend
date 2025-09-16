@@ -17,7 +17,7 @@ export class AuthService {
         private jwtService: JwtService,
         private configService: ConfigService,) { }
         
-    async validateUser({ regId, password }: { regId: number, password: string }) {
+    async validateUser({ regId, password }: { regId: string, password: string }) {
         const user = await this.userService.findOneByRegId(regId);
         if (!user) throw new UnauthorizedException("User regId not found");
         const matched = await this.hasingService.compare(password, user.password);

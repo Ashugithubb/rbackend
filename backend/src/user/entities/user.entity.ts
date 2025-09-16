@@ -1,46 +1,59 @@
-import { Column, CreateDateColumn, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToMany, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Role } from "../enum/user.enum";
 import { StudentTest } from "src/student-test/entities/student-test.entity";
 import { StudentAnswer } from "src/student-answers/entities/student-answer.entity";
+import { DeleteDateColumn } from "typeorm";
 
 @Entity('users')
 export class User {
     @PrimaryGeneratedColumn()
-    regId:number
+    userId: number
 
-    @Column({length:255})
-    name:string
+    @Column({unique:true})
+    regId: string
 
-    @Column()
-    class:string
+    @Column({ length: 255 })
+    firstName: string
 
-    @Column()
-    school:string
-
-    @Column()
-    phoneNo:string
+    @Column({ length: 255 })
+    lastName: string
 
     @Column()
-    fatherName:string
+    class: string
 
     @Column()
-    parentNo:string
+    school: string
 
     @Column()
-    address:string
-    
+    phoneNo: string
+
+    @Column()
+    fatherName: string
+
+    @Column()
+    parentNo: string
+
+    @Column()
+    address: string
+
+    @Column()
+    password: string
+
+    @Column({ type: "enum", enum: Role })
+    role: Role
+
     @CreateDateColumn()
-    createdAt:Date
+    createdAt: Date
 
-    @Column()
-    password:string
+    @UpdateDateColumn()
+    updatedAt: Date
 
-    @Column({type:"enum",enum:Role})
-    role:Role
+    @DeleteDateColumn()
+    deletedAt: Date
 
-    @OneToMany(()=>StudentTest,(s)=>s.user)
-    studentTests:StudentTest[]
+    @OneToMany(() => StudentTest, (s) => s.user)
+    userTests: StudentTest[]
 
-    @OneToMany(()=>StudentAnswer,(s)=>s.user)
-    studentAns:StudentAnswer[]
+    @OneToMany(() => StudentAnswer, (s) => s.user)
+    studentAns: StudentAnswer[]
 }

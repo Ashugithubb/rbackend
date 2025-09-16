@@ -19,7 +19,7 @@ export class UserRepository extends Repository<User> {
   }
 
 
-  async findById(regId: number) {
+  async findById(regId: string) {
     return await this.findOneBy({ regId })
   }
 }

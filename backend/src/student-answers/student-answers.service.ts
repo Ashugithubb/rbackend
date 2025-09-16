@@ -17,7 +17,7 @@ export class StudentAnswersService {
     private readonly studentTestRepo: StudentTestRepository
   ) { }
 
-  async create(createStudentAnswersDto: CreateStudentAnswersDto, regId: number) {
+  async create(createStudentAnswersDto: CreateStudentAnswersDto, regId: string) {
 
     const { testId, answers } = createStudentAnswersDto;
 
@@ -44,7 +44,7 @@ export class StudentAnswersService {
       const studentTest = this.studentTestRepo.create({
         user,
         test,
-        maxAttempts: 1
+      
       })
       const studentAttempt = await this.studentTestRepo.save(studentTest);
       const attemptId = studentAttempt.id;
@@ -63,7 +63,7 @@ export class StudentAnswersService {
     const studentTest = this.studentTestRepo.create({
       user,
       test,
-      maxAttempts: 2
+  
     })
     const studentAttempt = await this.studentTestRepo.save(studentTest);
     const attemptId = studentAttempt.id;

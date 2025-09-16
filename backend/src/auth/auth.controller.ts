@@ -10,7 +10,7 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @UseGuards(AuthGuard('local'))
     @Post('login')
-    login(@Body() { regId, password}, @Res({ passthrough: true }) res: Response,@Request() req) {
+    login(@Body() authDto:CreateAuthDto, @Res({ passthrough: true }) res: Response,@Request() req) {
         const user = req.user;
         const payload = {regId: user.regId,role:user.role};
         

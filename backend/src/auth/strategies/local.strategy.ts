@@ -12,7 +12,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(regId: number, password: string) {
+  async validate(regId: string, password: string) {
     return await this.authService.validateUser({ regId , password });
   }
 }

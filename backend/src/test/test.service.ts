@@ -53,16 +53,7 @@ export class TestService {
 
 
   async findOne(id: number, regId: number) {
-    const attemptOver = await this.studentTestRepo.findOne({
-      where: {
-        user: { regId },
-        test: { testId: id },
-        maxAttempts: 1
-      }
-    })
-    if (attemptOver) {
-      throw new BadRequestException("Your Attempt is Over")
-    }
+  
     const test = await this.testRepo.findByTestId(id);
     if (!test) throw new NotFoundException()
     const now = new Date()
@@ -86,6 +77,7 @@ export class TestService {
     const testWithQuestion = qb.getOne()
     return testWithQuestion;
   }
+
 
   update(id: number, updateTestDto: UpdateTestDto) {
     return `This action updates a #${id} test`;

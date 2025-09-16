@@ -1,8 +1,8 @@
-import { IsEmail, IsStrongPassword } from "class-validator";
+import { IsString, IsStrongPassword } from "class-validator";
 
 export class CreateAuthDto {
-    @IsEmail()
-    regId:number
+    @IsString()
+    regId:string
 
     @IsStrongPassword()
     password:string
