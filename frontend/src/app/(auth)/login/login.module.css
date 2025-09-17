@@ -1,0 +1,26 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(125, 106, 251) 0%, rgb(137, 90, 246) 50%, rgb(248, 198, 48) 100%);
+    background-repeat: no-repeat;
+
+}
+
+.login {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    color: aliceblue;
+    padding: 25px;
+    gap: 25px;
+    border-radius: 10px;
+}
+
